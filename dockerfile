@@ -1,0 +1,19 @@
+FROM node:carbon
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Copy both package and package-lock/... correct dest?
+COPY package*.json ./
+
+# Dependancies
+RUN npm install
+
+# Bundle app src
+COPY . . 
+
+# PORT to expose
+EXPOSE 8080
+
+# Start app
+CMD [ "npm", "start"]

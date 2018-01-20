@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Photographer",
+    "description": "An asset named Photographer",
+    "type": "object",
+    "properties": {
+        "$class": {
+            "type": "string",
+            "default": "org.osprey.critique.Photographer",
+            "description": "The class identifier for this type"
+        },
+        "groupMembership": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "description": "The identifier of an instance of org.osprey.critique.Group"
+            }
+        },
+        "submittedCritique": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "description": "The identifier of an instance of org.osprey.critique.Critique"
+            }
+        },
+        "email": {
+            "type": "string",
+            "description": "The instance identifier for this type"
+        },
+        "firstName": {
+            "type": "string"
+        },
+        "lastName": {
+            "type": "string"
+        },
+        "displayName": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "$class",
+        "groupMembership",
+        "submittedCritique",
+        "email",
+        "firstName",
+        "lastName",
+        "displayName"
+    ]
+}
