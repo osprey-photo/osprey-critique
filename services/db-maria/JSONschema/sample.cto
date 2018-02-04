@@ -1,0 +1,39 @@
+/**
+ * Sample business network definition.
+ */
+namespace org.osprey.critique
+
+abstract asset Person identified by email {
+  o String email
+  o String firstName
+  o String lastName
+  o String displayName
+}
+
+asset Photographer extends Person {
+  --> Group[]  groupMembership
+  --> Critique[] submittedCritique
+}
+
+asset Group identified by groupId {
+  o String groupId
+  o String name
+  --> Critique[] groupCritiques
+}
+
+asset Critique identified by critiqueId {
+  o String critiqueId
+  o String uriImage
+  --> Photographer submitter
+  --> Comment openingComment
+  --> Comment[] comments
+}
+
+asset Comment identified by commentId {
+  o String commentId
+  o DateTime timestamp
+  o String text
+  --> Photographer author
+//--> Adjustment[] adjustments
+}
+

@@ -37,8 +37,3 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
-# Getting started archive - created as part of thenpm install
-packages/**/digitalPropertyNetwork.bna
-
-# Fabric start tools if they are downloaded into the usual directory
-fabric-tools/**

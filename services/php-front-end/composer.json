@@ -1,0 +1,14 @@
+{
+    "name": "matthew/php-mid",
+    "authors": [
+        {
+            "name": "Matthew B White",
+            "email": "whitemat@uk.ibm.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "~6.0",
+        "twig/twig": "^2.0",
+        "monolog/monolog": "^1.23"
+    }
+}

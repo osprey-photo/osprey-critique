@@ -2,17 +2,20 @@
   "name": "voyager",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "",
   "scripts": {
-    "start": "node server.js"
+
   },
   "dependencies": {
-    "express": "^4.16.1",
-    "knex": "^0.14.2",
-    "mysql": "^2.15.0",
-    "objection": "^0.9.4"
+
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.17.0",
+    "gulp": "^3.9.1",
+    "gulp-exec": "^3.0.1",
+    "gulp-util": "^3.0.8"
+  }
 }

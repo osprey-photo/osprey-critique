@@ -1,0 +1,19 @@
+{
+  "name": "voyager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "mysql": "docker run -it --link osprey-maria:mysql --rm mariadb sh -c 'exec mysql -h\"$MYSQL_PORT_3306_TCP_ADDR\" -P\"$MYSQL_PORT_3306_TCP_PORT\" -uroot -p\"$MYSQL_ENV_MYSQL_ROOT_PASSWORD\"'"
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+    "knex": "^0.14.2",
+    "mysql": "^2.15.0",
+    "objection": "^0.9.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
