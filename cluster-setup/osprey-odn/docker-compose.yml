@@ -1,0 +1,42 @@
+version: "3"
+services: 
+  db:
+    image: mariadb:latest
+    ports: 
+      - "3306:3306"
+    container_name: maria_db
+    environment:
+      - MYSQL_ROOT_PASSWORD=mypass
+  minio:
+    image: minio/minio
+    ports:
+      - "9000:9000"
+    container_name: minio_ds
+    volumes:
+      - ./data:/data
+      - ./config:/root/.mini
+    command: "server /data"
+  frontend:
+    build: ../../services/web-front-end
+    ports:
+      - "8080:80"
+    container_name: front
+    depends_on: 
+      - filemgt
+      - data-layer
+  data-layer:
+    build: ../../services/data-layer
+    ports:
+      - "8641:8641"
+    container_name: orm
+    depends_on: 
+      - db
+  filemgt:
+    build: ../../services/file-mgt
+    ports:
+      - "9001:9001"
+    container_name: file_mgt
+    depends_on:
+      - db
+      - minio    
+      

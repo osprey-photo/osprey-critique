@@ -26,3 +26,5 @@ https://webpack.js.org/guides/output-management/
 https://mariadb.com/kb/en/library/installing-and-using-mariadb-via-docker/#downloading-an-image
 
 https://github.com/axios/axios/tree/master/examples
+
+https://blog.risingstack.com/node-js-best-practices-part-2/

@@ -3,19 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "",
-  "scripts": {
-
-  },
-  "dependencies": {
-
-  },
+  "scripts": {},
+  "dependencies": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^4.17.0",
+    "fancy-log": "^1.3.2",
     "gulp": "^3.9.1",
     "gulp-exec": "^3.0.1",
-    "gulp-util": "^3.0.8"
+    "gulp-help-doc": "^1.1.0"
   }
 }
