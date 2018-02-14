@@ -5,12 +5,12 @@
   "main": "app.js",
   "scripts": {
     "migrate": "knex migrate:latest",
-    "start": "npm run migrate && node app"
+    "start": "node app"
   },
   "engines": {
     "node": ">=8.0.0"
   },
-  "author": "Sami Koskimäki",
+  "author": "Matthew White",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.17.0",

@@ -28,6 +28,8 @@
     "axios": "^0.17.1",
     "babel-polyfill": "^6.26.0",
     "bulma": "^0.6.2",
-    "lodash": "^4.17.5"
+    "file-upload-with-preview": "^2.0.1",
+    "lodash": "^4.17.5",
+    "uppy": "^0.23.0"
   }
 }

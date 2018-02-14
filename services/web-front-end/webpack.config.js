@@ -11,7 +11,8 @@ module.exports = {
             './src/main.js'
 
         ],
-        print: './src/print.js'
+        print: './src/print.js',
+        upload: ['babel-polyfill','./src/upload.js']
     },
     devtool: 'inline-source-map',
     output: {

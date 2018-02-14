@@ -25,7 +25,7 @@ function insertAfter(el, referenceNode) {
 async function component() {
     
 
-    // let table = document.getElementById('photographers');
+    let table = document.getElementById('photographers');
 
     // let resp = await req.get('photographers', {});
     // let people = resp.data;

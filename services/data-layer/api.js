@@ -2,15 +2,16 @@
 
 const { transaction } = require('objection');
 const Photographers = require('./models/photographers');
+const Images = require('./models/images');
 // const Groups = require('./models/Groups');
 
 
 // The error returned by this function is handled in the error handler middleware in app.js.
-// function createStatusCodeError(statusCode) {
-//     return Object.assign(new Error(), {
-//         statusCode
-//     });
-// }
+function createStatusCodeError(statusCode) {
+    return Object.assign(new Error(), {
+        statusCode
+    });
+}
 
 module.exports = router => {
     // Create a new Person. Because we use `insertGraph` you can pass relations
@@ -45,9 +46,9 @@ module.exports = router => {
     // `minAge`, `maxAge` and `firstName`. Relations can be fetched eagerly
     // by giving a relation expression as the `eager` query parameter.
     router.get('/photographers', async (req, res) => {
-    // We don't need to check for the existence of the query parameters because
-    // we call the `skipUndefined` method. It causes the query builder methods
-    // to do nothing if one of the values is undefined.
+        // We don't need to check for the existence of the query parameters because
+        // we call the `skipUndefined` method. It causes the query builder methods
+        // to do nothing if one of the values is undefined.
         const persons = await Photographers.query()
             .skipUndefined()
             .orderBy('firstName')
@@ -63,6 +64,25 @@ module.exports = router => {
         res.send({});
     });
 
+    router.get('/images/:id/', async (req, res) => {
+        const image = await Images.query().findById(req.params.id);
+
+        if (!image) {
+            throw createStatusCodeError(404);
+        }
+
+        res.send(image);
+    });
+
+    router.post('/images', async (req, res) => {
+        const inserted = await transaction(Images.knex(), trx => {
+            return (
+                Images.query(trx).insert(req.body)
+            );
+        });
+
+        res.send(inserted);
+    });
 
     // // Add a pet for a Person.
     // router.post('/persons/:id/pets', async (req, res) => {

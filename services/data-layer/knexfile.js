@@ -4,7 +4,7 @@ module.exports = {
     development: {
         client: 'mariasql',
         connection: {
-            host: 'localhost',
+            host: 'maria_db',
             user: 'root',
             password: 'mypass',
             db: 'osprey',

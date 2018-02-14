@@ -2,8 +2,8 @@
 
 
 docker network create -d bridge osprey-odn
-docker run --net=osprey-odn --name osprey-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
-#docker run -it --net=voyager-odn  --rm mysql sh -c 'exec mysql -hsome-mysql -P3306 -uroot -pmy-secret-pw'
+docker run --net=ospreyodn_default --name osprey-mysql -e MYSQL_ROOT_PASSWORD=mypass -d mysql:latest
+docker run -it --net=ospreyodn_default  --rm mysql sh -c 'exec mysql -hmariadb -P3306 -uroot -pmypass'
 
 # build docker image
 #docker build -t matthew/node-web-app .
