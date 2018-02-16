@@ -1,29 +1,23 @@
 'use strict';
 
 
-require('bulma/css/bulma.css')
-import printMe from './print.js';
-const _ = require('lodash')
+require('bulma/css/bulma.css');
+
+const _ = require('lodash');
 const util = require('util');
 
 
-const axios = require('axios')
+const axios = require('axios');
 const req = axios.create({
     baseURL: 'http://localhost:8641/'
 });
 
 
-function addClass(el, className) {
-    if (el.classList) el.classList.add(className);
-    else if (!hasClass(el, className)) el.className += ' ' + className;
-}
-function insertAfter(el, referenceNode) {
-    referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
-}
+
 
 
 async function component() {
-    
+
 
     let table = document.getElementById('photographers');
 
@@ -40,22 +34,22 @@ async function component() {
     // //console.log(people);
 
 
-    var element = document.createElement('div');
-    addClass(element,'container')
+    let element = document.createElement('div');
+    addClass(element,'container');
 
-    var btn = document.createElement('button');
-    
-        element.innerHTML = _.join(['Hello', 'Webpack'], ' ');
-    
-       btn.innerHTML = 'Click me and check the console!';
-       btn.onclick = printMe;
-    
-       element.appendChild(btn);
-    
-        return element;
-    
+    let btn = document.createElement('button');
+
+    element.innerHTML = _.join(['Hello', 'Webpack'], ' ');
+
+    btn.innerHTML = 'Click me and check the console!';
+    btn.onclick = printMe;
+
+    element.appendChild(btn);
+
+    return element;
+
 }
 (async function(){
     //await component();
-     document.body.appendChild(await component());
-})()
+    document.body.appendChild(await component());
+})();

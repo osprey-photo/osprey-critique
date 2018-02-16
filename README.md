@@ -1,4 +1,55 @@
-## Adventures with databases
+# Osprey Critique
+
+## Items to look at
+
+- Create export file with plain js DOM functions
+- Create fixed header, and site map.
+	- Log in screen
+	- Home screen for logged in user
+	- Group page showing open critiques for this group
+	- Critique page - main interaction
+	- Profile page
+	- Admin pages
+
+- Data-layer 
+  - Add in APIs to support required strucure.
+  - http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
+  - Need error codes
+
+- Authentication & Authorization
+
+## Utilties to be used
+
+- For the text editing and comments use https://quilljs.com/
+- For toast pop ups.. http://silvio-r.github.io/spop/
+
+## Notes and reference
+
+- Forms:  https://eloquentjavascript.net/18_forms.html
+- Plain JS functions for DOM:  https://plainjs.com/javascript/
+- Logging:
+   - Winston for app logging
+   - Docker container logging https://github.com/gliderlabs/logspout/tree/master/httpstream
+- Configuration:
+	- Use Env variables to configure the docker containers
+	- https://github.com/lorenwest/node-config/wiki/Environment-Variables
+- Objection.js
+	- ORM http://vincit.github.io/objection.js
+- REST APIs
+    - http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
+
+
+
+docker network create -d bridge osprey-odn
+docker run --net=ospreyodn_default --name osprey-mysql -e MYSQL_ROOT_PASSWORD=mypass -d mysql:latest
+docker run -it --net=ospreyodn_default  --rm mysql sh -c 'exec mysql -hmariadb -P3306 -uroot -pmypass'
+
+docker run -d --name="logspout" \
+	--volume=/var/run/docker.sock:/var/run/docker.sock \
+	--publish=127.0.0.1:8000:80 \
+	gliderlabs/logspout
+    curl http://127.0.0.1:8000/logs
+    https://github.com/gliderlabs/logspout/tree/master/httpstream
 
 https://docs.docker.com/samples/library/mysql/
 

@@ -11,10 +11,11 @@
     "node": ">=8.0.0"
   },
   "author": "Matthew White",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "dependencies": {
     "axios": "^0.17.0",
     "body-parser": "^1.18.2",
+    "config": "^1.29.4",
     "express": "^4.16.2",
     "express-promise-router": "^2.0.0",
     "knex": "^0.13.0",

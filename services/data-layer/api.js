@@ -14,6 +14,7 @@ function createStatusCodeError(statusCode) {
 }
 
 module.exports = router => {
+
     // Create a new Person. Because we use `insertGraph` you can pass relations
     // with the person and they also get inserted and related to the person. If
     // all you want to do is insert a single person, `insertGraph` and `allowInsert`
@@ -53,7 +54,7 @@ module.exports = router => {
             .skipUndefined()
             .orderBy('firstName')
            ;
-
+        console.log(persons);
         res.send(persons);
     });
 
@@ -64,6 +65,7 @@ module.exports = router => {
         res.send({});
     });
 
+    // Get a specific image by ID
     router.get('/images/:id/', async (req, res) => {
         const image = await Images.query().findById(req.params.id);
 
@@ -74,6 +76,7 @@ module.exports = router => {
         res.send(image);
     });
 
+    // Create a new image
     router.post('/images', async (req, res) => {
         const inserted = await transaction(Images.knex(), trx => {
             return (
@@ -84,18 +87,167 @@ module.exports = router => {
         res.send(inserted);
     });
 
-    // // Add a pet for a Person.
-    // router.post('/persons/:id/pets', async (req, res) => {
-    //     const person = await Person.query().findById(req.params.id);
+    //
+    // router.get('/groups/', async (req, res) => {
+    //     const image = await Images.query().findById(req.params.id);
 
-    //     if (!person) {
+    //     if (!image) {
     //         throw createStatusCodeError(404);
     //     }
 
-    //     const pet = await person.$relatedQuery('pets').insert(req.body);
-
-    //     res.send(pet);
+    //     res.send(image);
     // });
+
+    router.get('/groups/:id/', async (req, res) => {
+        const image = await Images.query().findById(req.params.id);
+
+        if (!image) {
+            throw createStatusCodeError(404);
+        }
+
+        res.send(image);
+    });
+
+    // creates a new group
+    router.post('/groups', async (req, res) => {
+        const image = await Images.query().findById(req.params.id);
+
+        if (!image) {
+            throw createStatusCodeError(404);
+        }
+
+        res.send(image);
+    });
+
+    router.patch('/groups/:id', async (req, res) => {
+        const image = await Images.query().findById(req.params.id);
+
+        if (!image) {
+            throw createStatusCodeError(404);
+        }
+
+        res.send(image);
+    });
+
+    router.post('/critiques', async (req, res) => {
+        const image = await Images.query().findById(req.params.id);
+
+        if (!image) {
+            throw createStatusCodeError(404);
+        }
+
+        res.send(image);
+    });
+
+    router.patch('/critiques/:id', async (req, res) => {
+        const image = await Images.query().findById(req.params.id);
+
+        if (!image) {
+            throw createStatusCodeError(404);
+        }
+
+        res.send(image);
+    });
+
+    router.get('/critiques/:id', async (req, res) => {
+        const image = await Images.query().findById(req.params.id);
+
+        if (!image) {
+            throw createStatusCodeError(404);
+        }
+
+        res.send(image);
+    });
+
+    router.get('/critiques/', async (req, res) => {
+        const image = await Images.query().findById(req.params.id);
+
+        if (!image) {
+            throw createStatusCodeError(404);
+        }
+
+        res.send(image);
+    });
+
+    router.get('/comments/:id', async (req, res) => {
+        const image = await Images.query().findById(req.params.id);
+
+        if (!image) {
+            throw createStatusCodeError(404);
+        }
+
+        res.send(image);
+    });
+
+    router.get('/comments/', async (req, res) => {
+        const image = await Images.query().findById(req.params.id);
+
+        if (!image) {
+            throw createStatusCodeError(404);
+        }
+
+        res.send(image);
+    });
+
+    router.patch('/comments/:id', async (req, res) => {
+        const image = await Images.query().findById(req.params.id);
+
+        if (!image) {
+            throw createStatusCodeError(404);
+        }
+
+        res.send(image);
+    });
+
+    router.post('/comments/', async (req, res) => {
+        const image = await Images.query().findById(req.params.id);
+
+        if (!image) {
+            throw createStatusCodeError(404);
+        }
+
+        res.send(image);
+    });
+
+    router.get('/adjustments/:id', async (req, res) => {
+        const image = await Images.query().findById(req.params.id);
+
+        if (!image) {
+            throw createStatusCodeError(404);
+        }
+
+        res.send(image);
+    });
+
+    router.get('/adjustments/', async (req, res) => {
+        const image = await Images.query().findById(req.params.id);
+
+        if (!image) {
+            throw createStatusCodeError(404);
+        }
+
+        res.send(image);
+    });
+
+    router.patch('/adjustments/:id', async (req, res) => {
+        const image = await Images.query().findById(req.params.id);
+
+        if (!image) {
+            throw createStatusCodeError(404);
+        }
+
+        res.send(image);
+    });
+
+    router.post('/adjustments/', async (req, res) => {
+        const image = await Images.query().findById(req.params.id);
+
+        if (!image) {
+            throw createStatusCodeError(404);
+        }
+
+        res.send(image);
+    });
 
 };
 

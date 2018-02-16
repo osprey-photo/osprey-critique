@@ -28,7 +28,7 @@ services:
     build: ../../services/data-layer
     ports:
       - "8641:8641"
-    container_name: orm
+    container_name: data_layer
     depends_on: 
       - db
   filemgt:

@@ -1,0 +1,32 @@
+{
+    "osprey" : {
+        "control" : {
+            "host" : "127.0.0.1",
+            "port" : ""
+        },
+        "data-layer" : {
+            "host" : "127.0.0.1",
+            "port" : "8641"
+        },
+        "db-maria" : {
+            "host" : "127.0.0.1",
+            "port" : "3306",
+            "user" : "root",
+            "password" : "mypass"
+        },
+        "file-mgt" : {
+            "host" : "127.0.0.1",
+            "port" : "9001"
+        },
+        "web-front-end" : {
+            "host" : "127.0.0.1",
+            "port" : "8080"
+        },
+        "minio" : {
+            "host" : "127.0.0.1",
+            "port" : "9000",
+            "accessKey" : "",
+            "secretKey" : ""
+        }
+    }
+}

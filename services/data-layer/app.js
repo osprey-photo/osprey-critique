@@ -8,9 +8,12 @@ const promiseRouter = require('express-promise-router');
 const knexConfig = require('./knexfile');
 const registerApi = require('./api');
 const { Model } = require('objection');
-
+const config = require('config');
 // Initialize knex.
 const knex = Knex(knexConfig.development);
+
+
+const CFG = config.get('osprey.data-layer');
 
 // Bind all Models to a knex instance. If you only have one database in
 // your server this is all you have to do. For multi database systems, see
@@ -51,6 +54,6 @@ app.use((err, req, res, next) => {
     }
 });
 
-const server = app.listen(8641, () => {
+const server = app.listen(CFG.port, () => {
     console.log('Example app listening at port %s', server.address().port);
 });

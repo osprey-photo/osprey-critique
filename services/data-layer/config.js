@@ -5,8 +5,10 @@
 
 let config = module.exports = {};
 
-config.server = {
-    host: '0.0.0.0',
-    port: process.env.PORT || 3000
+config.db = {
+    host: process.env.DBHOST || '0.0.0.0',
+    port: process.env.DBPORT || 3306,
+    user: process.env.DBUSER || 'root',
+    pwd:  process.env.DBPWD  || 'mypass'
 };
 

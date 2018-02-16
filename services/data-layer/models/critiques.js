@@ -8,24 +8,40 @@ class Critiques extends Model {
         return 'Groups';
     }
 
-    // This object defines the relations to other models.
+    // Has image
+    // has submitter
+    /*
+      static relationMappings = {
+    owner: {
+      relation: Model.BelongsToOneRelation,
+      modelClass: Person,
+      join: {
+        from: 'animal.ownerId',
+        to: 'person.id'
+      }
+    }
+  }
+    */
     static get relationMappings() {
         return {
-            groupMembership: {
-                relation: Model.ManyToManyRelation,
-                modelClass: Groups,
+            imageid: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Person,
                 join: {
-                    from: 'Groups.uid',
-                    // ManyToMany relation needs the `through` object to describe the join table.
-                    through: {
-                        to: 'Groups_Members.groupId',
-                        from: 'Groups_Members.memberId'
-                    },
-                    to: 'Photographers.uid'
+                    from: 'animal.ownerId',
+                    to: 'person.id'
+                }
+            },
+            submitterId: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Person,
+                join: {
+                    from: 'animal.ownerId',
+                    to: 'person.id'
                 }
             }
         };
     }
 }
 
-module.exports = Groups;
+module.exports = Critiques;

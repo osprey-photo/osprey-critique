@@ -69,7 +69,7 @@ exports.up = function(knex, Promise) {
             table.increments('uid').primary()
                 .unsigned()
                 .notNullable();
-            table.integer('filehash');
+            table.string('filehash');
             table.string('caption');
         }),
         //
