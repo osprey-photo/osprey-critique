@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Canvas tutorial</title>
+    <script src="./croppr.js"></script>
+    <link rel="stylesheet" type="text/css" href="./croppr.css">
+    <script type="text/javascript">
+        //http://camanjs.com/guides/#BasicUsage
+        //https://github.com/zhengsk/ImageFilters.js
+        //https://github.com/fengyuanchen/cropperjs/issues
+        //https://plainjs.com/javascript/events/binding-and-unbinding-of-event-handlers-12/
+        //https://tutorialzine.com/2017/08/image-zoom-library-with-vanilla-javascript
+        //https://sweetalert2.github.io/
+        //https://gomakethings.com/how-to-add-transition-animations-to-vanilla-javascript-show-and-hide-methods/
+        //http://jamesooi.design/Croppr.js/
+        function addEvent(el, type, handler) {
+            if (el.attachEvent) el.attachEvent('on' + type, handler); else el.addEventListener(type, handler);
+        }
+
+
+        function run() {
+            var ctx = document.getElementById('canvas').getContext('2d');
+            var img = new Image();
+            img.onload = function () {
+                ctx.drawImage(img, 0, 0);
+            };
+            img.src = 'https://picsum.photos/550/350';
+
+            //-----------------------------------------------------
+            var croppr = new Croppr(document.getElementById('croppr'), {
+                startSize: [80, 80, '%']
+            });
+            //-----------------------------------------------------
+            addEvent(document.getElementById('crop'), 'click', function () {
+                console.log(croppr.getValue());
+            });
+
+
+        }
+
+        // in case the document is already rendered
+        if (document.readyState != 'loading') run();
+        // modern browsers
+        else if (document.addEventListener) document.addEventListener('DOMContentLoaded', run);
+        // IE <= 8
+        else document.attachEvent('onreadystatechange', function () {
+            if (document.readyState == 'complete') run();
+        });
+    </script>
+    <style type="text/css">
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <canvas id="canvas" width="550" height="350"></canvas>
+    </div>
+
+    <a href="" id="crop">Crop</a>
+
+	<div>
+	    <img src="https://picsum.photos/400/200" id="croppr" />
+	</div>
+
+</body>
+
+</html>

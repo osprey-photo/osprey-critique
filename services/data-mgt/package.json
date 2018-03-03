@@ -1,0 +1,28 @@
+{
+  "name": "data-mgt",
+  "version": "0.9.0",
+  "description": "Objection.js express ES6 example",
+  "main": "app.js",
+  "scripts": {
+    "migrate": "knex migrate:latest",
+    "start": "node app"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "author": "Matthew White",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "axios": "^0.17.0",
+    "body-parser": "^1.18.2",
+    "config": "^1.29.4",
+    "express": "^4.16.2",
+    "express-promise-router": "^2.0.0",
+    "knex": "^0.13.0",
+    "lodash": "^4.17.4",
+    "mariasql": "^0.2.6",
+    "morgan": "^1.9.0",
+    "mysql": "^2.15.0",
+    "objection": "^0.9.0"
+  }
+}

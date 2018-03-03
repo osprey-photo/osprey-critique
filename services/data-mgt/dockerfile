@@ -1,0 +1,26 @@
+FROM node:carbon
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Copy both package and package-lock/... correct dest?
+COPY package*.json ./
+RUN apt-get --assume-yes update
+RUN apt-get --assume-yes install mysql-client
+RUN ["apt-get", "update"]
+RUN ["apt-get", "install", "-y", "vim"]
+
+# Dependancies
+RUN npm install
+RUN npm install -g knex
+
+# Bundle app src
+COPY . . 
+COPY setup.sh .
+# RUN /usr/src/app/dbsetup.sh
+
+# PORT to expose
+EXPOSE 8641
+
+# Start app
+CMD [ "npm", "start"]

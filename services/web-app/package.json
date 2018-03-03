@@ -1,0 +1,35 @@
+{
+  "name": "web-front-end",
+  "version": "1.0.0",
+  "description": "Web front end for Osprey-Critique",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:dev": "webpack ",
+    "start": " serve dist"
+  },
+  "keywords": [],
+  "author": "Matthew B White",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "clean-webpack-plugin": "^0.1.18",
+    "copy-webpack-plugin": "^4.4.1",
+    "css-loader": "^0.28.9",
+    "file-loader": "^1.1.6",
+    "serve": "^6.4.11",
+    "style-loader": "^0.20.2",
+    "webpack": "^3.11.0"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "babel-polyfill": "^6.26.0",
+    "bulma": "^0.6.2",
+    "croppr": "^2.2.1",
+    "jimp": "0.2.27",
+    "lodash": "^4.17.5",
+    "uppy": "^0.23.0"
+  }
+}

@@ -8,7 +8,6 @@
  */
 
 const path = require('path');
-const log = require('fancy-log');
 
 let webFrontEnd = path.resolve( __dirname, 'services','web-front-end');
 let dockerCompose = path.resolve( __dirname, 'cluster-setup','osprey-odn');
@@ -43,8 +42,8 @@ gulp.task('help', function() { return usage(gulp); });
 gulp.task('default', ['help']);
 
 /**
- * Rebuild the webpack comtents
- * @task {webpack} Hello
+ * Re-WebPack the script files
+ * @task {webpack}
  */
 gulp.task('webpack', () => {
     gulp.src(webFrontEnd)
@@ -52,51 +51,99 @@ gulp.task('webpack', () => {
         .pipe(exec.reporter(reportOptions));
 });
 
-gulp.task('docker-front-end' ,function() {
-    gulp.src(webFrontEnd)
-        .pipe(exec('docker build <%= file.path %>', options))
-        .pipe(exec.reporter(reportOptions));
-});
-
+// help function to just rebuild the one container
 function rebuildOne(service){
     // docker-compose up -d --no-deps --build <service_name>
     let composerFile = path.join(dockerCompose,'/docker-compose.yml');
     let options = {service};
-    gulp.src(composerFile)
+    return gulp.src(composerFile)
         .pipe(exec('docker-compose -f <%= file.path %> up -d --no-deps --build <%= options.service %>', options))
         .pipe(exec.reporter(reportOptions));
 }
 
 /**
- * @task {data-layer}  Rebuild the data-layer
+ * Rebuild the file-mgt docker container
+ * @task {file-mgt{}
+ */
+gulp.task('file-mgt',  ()=>{
+    return rebuildOne('filemgt');
+});
+
+/**
+ * Rebuild the front end docker container (inc webpack)
+ * @task {web-front-end}
+ */
+gulp.task('web-front-end', ['webpack'], ()=>{
+    return rebuildOne('data-layer');
+});
+
+/**
+ * @task {data-layer}  Rebuild the data-layer docker container
  */
 gulp.task('data-layer', ()=>{
     return rebuildOne('data-layer');
 });
 
-// create a default task and just log a message
+/**
+ *  Issue the docker-compose up command
+ * @task {compose-up}
+ */
 gulp.task('compose-up', ()=>{
     let composerFile = path.join(dockerCompose,'/docker-compose.yml');
-    gulp.src(composerFile)
+    return gulp.src(composerFile)
         .pipe(exec('docker-compose -f <%= file.path %> up -d', options))
         .pipe(exec.reporter(reportOptions));
 });
 
-// create a default task and just log a message
+/**
+ * Setup the database post compose-up
+ */
+gulp.task('setup', ()=>{
+    let composerFile = path.join(dockerCompose,'/setup.sh');
+    return gulp.src(composerFile)
+        .pipe(exec(' <%= file.path %>', options))
+        .pipe(exec.reporter(reportOptions));
+});
+
+/**
+ *  Issue the docker-compose down command
+ * @task {compose-down}
+ */
 gulp.task('compose-down', ()=>{
     let composerFile = path.join(dockerCompose,'/docker-compose.yml');
-    gulp.src(composerFile)
+    return gulp.src(composerFile)
         .pipe(exec('docker-compose -f <%= file.path %> down', options))
         .pipe(exec.reporter(reportOptions));
 });
 
-gulp.task('watch', function() {
-    gulp.watch('./**/*', ['copyAlpha']);
+/**
+ * Issue the docker-compose build command
+ * @task {compose-build}
+ */
+gulp.task('compose-build', ()=>{
+    let composerFile = path.join(dockerCompose,'/docker-compose.yml');
+    return gulp.src(composerFile)
+        .pipe(exec('docker-compose -f <%= file.path %> build', options))
+        .pipe(exec.reporter(reportOptions));
 });
 
-gulp.task('copyAlpha', function() {
-    // copy any html files in source/ to public/
-    gulp.src('./**/*').pipe(gulp.dest('w:/quiz'));
+/**
+ * @task {docker-monitor} Run the docker monitor script
+ */
+gulp.task('docker-monitor', ()=>{
+    let script = path.join(dockerCompose,'/monitor.sh');
+    return gulp.src(script)
+        .pipe(exec('<%= file.path %>', options))
+        .pipe(exec.reporter(reportOptions));
 });
+
+// gulp.task('watch', function() {
+//     gulp.watch('./**/*', ['copyAlpha']);
+// });
+
+// gulp.task('copyAlpha', function() {
+//     // copy any html files in source/ to public/
+//     gulp.src('./**/*').pipe(gulp.dest('w:/quiz'));
+// });
 
 

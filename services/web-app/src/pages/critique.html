@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="./critique.bundle.js"></script>
+  <title>Osprey - Critique Add</title>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+
+<body>
+
+
+  <section class="hero is-dark">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Osprey
+        </h1>
+        <h2 class="subtitle">
+          File upload
+          <i class="fas fa-upload"></i>
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+        Critique - A study in pixels
+      </h1>
+      <div id="summaryInfo" class="box">
+        <p>
+          Summary details of the image go here.....
+        </p>
+      </div>
+    </div>
+    <div class="container __appdata" id="imageContainer">
+      <div id="img-a1">
+      </div>
+      <div id="canvas-a2">
+        <canvas crossOrigin="anonymous" id="canvas" width="550" height="350"></canvas>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="section  __appdata" id="controlSection">
+    <div class="container">
+      <div class="tabs" id="tabs-ctrls">
+        <ul>
+          <li class="is-active">
+            <a id='adjustment-btn'>Adjustments</a>
+          </li>
+          <li>
+            <a id='crop-btn'>Crop</a>
+          </li>
+          <li>
+            <a id='marker-btn'>Markers</a>
+          </li>
+        </ul>
+      </div>
+      <div class="container" id="adjustment-ctrls">
+        <nav class="level">
+          <!-- Left side -->
+          <div class="level-left">
+            <div class="level-item">
+              <p class="subtitle is-5">
+                <strong>Brightness</strong>
+              </p>
+            </div>
+            <div class="level-item">
+              <div class="field">
+                <p class="control">
+                  <input type="range" id="brightnessRange" min="-100" value="0" max="100" step="10">
+                </p>
+              </div>
+            </div>
+            <p class="level-item">
+              <a class="button is-success" id="brightness-apply-btn">Apply</a>
+            </p>
+            <p class="level-item">
+              <a class="button is-success" id="brightness-reset-btn">Reset</a>
+            </p>
+          </div>
+
+          <!-- Right side -->
+          <div class="level-right">
+            <div class="level-item">
+              <p class="subtitle is-5">
+                <strong>Contrast</strong>
+              </p>
+            </div>
+            <div class="level-item">
+              <div class="field">
+                <p class="control">
+                  <input type="range" id="contrast-range" min="-100" value="0" max="100" step="10">
+                </p>
+              </div>
+            </div>
+            <p class="level-item">
+              <a class="button is-success" id="contrast-apply-btn">Apply</a>
+            </p>
+            <p class="level-item">
+              <a class="button is-success" id="contrast-reset-btn">Reset</a>
+            </p>
+          </div>
+        </nav>
+        <nav class="level">
+          <!-- Left side -->
+          <div class="level-left">
+            <div class="level-item">
+              <p class="subtitle is-5">
+                <strong>Brightness</strong>
+              </p>
+            </div>
+            <div class="level-item">
+              <div class="field">
+                <p class="control">
+                  <input type="range" id="brightnessRange" min="-100" value="0" max="100" step="10">
+                </p>
+              </div>
+            </div>
+            <p class="level-item">
+              <a class="button is-success" id="brightness-apply-btn">Apply</a>
+            </p>
+            <p class="level-item">
+              <a class="button is-success" id="brightness-reset-btn">Reset</a>
+            </p>
+          </div>
+
+          <!-- Right side -->
+          <div class="level-right">
+            <div class="level-item">
+              <p class="subtitle is-5">
+                <strong>Contrast</strong>
+              </p>
+            </div>
+            <div class="level-item">
+              <div class="field">
+                <p class="control">
+                  <input type="range" id="contrast-range" min="-100" value="0" max="100" step="10">
+                </p>
+              </div>
+            </div>
+            <p class="level-item">
+              <a class="button is-success" id="contrast-apply-btn">Apply</a>
+            </p>
+            <p class="level-item">
+              <a class="button is-success" id="contrast-reset-btn">Reset</a>
+            </p>
+          </div>
+        </nav>
+      </div>
+
+      <div class="container" id="crop-ctrls" style="display: none;">
+        Crop - free form - 1:1 - 4:3 - 16:9 - root 2
+      </div>
+      <div class="container" id="marker-ctrls" style="display: none;">
+        Add Marker Remove Marker
+
+      </div>
+
+    </div>
+  </section>
+
+</body>
+
+</html>

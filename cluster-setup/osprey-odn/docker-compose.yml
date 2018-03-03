@@ -16,6 +16,9 @@ services:
       - ./data:/data
       - ./config:/root/.mini
     command: "server /data"
+    environment:
+      - MINIO_ACCESS_KEY=VKHGJTS8P3DR63GVRXLJ
+      - MINIO_SECRET_KEY=6oXQdUMGUHEPcN4OfxN4ROXllCHZ7s/m3uNmcn7j
   frontend:
     build: ../../services/web-front-end
     ports:
@@ -38,5 +41,6 @@ services:
     container_name: file_mgt
     depends_on:
       - db
+      - data-layer
       - minio    
       

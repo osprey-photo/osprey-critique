@@ -15,6 +15,7 @@
   - Add in APIs to support required strucure.
   - http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
   - Need error codes
+  - MYSQL not using root
 
 - Authentication & Authorization
 
@@ -44,12 +45,14 @@ docker network create -d bridge osprey-odn
 docker run --net=ospreyodn_default --name osprey-mysql -e MYSQL_ROOT_PASSWORD=mypass -d mysql:latest
 docker run -it --net=ospreyodn_default  --rm mysql sh -c 'exec mysql -hmariadb -P3306 -uroot -pmypass'
 
+```bash
 docker run -d --name="logspout" \
 	--volume=/var/run/docker.sock:/var/run/docker.sock \
 	--publish=127.0.0.1:8000:80 \
 	gliderlabs/logspout
-    curl http://127.0.0.1:8000/logs
+curl http://127.0.0.1:8000/logs
     https://github.com/gliderlabs/logspout/tree/master/httpstream
+```
 
 https://docs.docker.com/samples/library/mysql/
 

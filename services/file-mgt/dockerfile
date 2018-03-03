@@ -13,7 +13,10 @@ RUN npm install
 COPY . . 
 
 # PORT to expose
-EXPOSE 3010
+EXPOSE 9001
+
+COPY setup.sh .
+# RUN /usr/src/app/dsSetup.sh
 
 # Start app
 CMD [ "npm", "start"]

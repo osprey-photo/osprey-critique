@@ -4,7 +4,9 @@
   "description": "",
   "main": "",
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+    "croppr": "^2.2.1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
