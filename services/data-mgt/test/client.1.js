@@ -20,8 +20,10 @@ const uuid = require('uuid');
 const chai = require('chai');
 chai.should();
 chai.use(require('chai-as-promised'));
-// chai.use(require('chai-things'));
 const sinon = require('sinon');
+let chaiSubset = require('chai-subset');
+chai.use(chaiSubset);
+
 /**
  * This file contains a bunch of HTTP requests that use the
  * API defined in api.js.
@@ -29,7 +31,7 @@ const sinon = require('sinon');
 
 const axios = require('axios');
 
-describe('data-layer testing', function(){
+describe('data-layer testing - photographers', function(){
 
     let req;
     before(()=>{
@@ -38,20 +40,44 @@ describe('data-layer testing', function(){
         });
     });
 
-    describe('image object',async ()=>{
-        it('should store a image data',async ()=>{
-            let img1 = await req.post('images', {
-                filehash: 12345679,
-                caption: 'An image'
+    describe('put photographer',async ()=>{
+        let id;
+        it('should store a new photographer',async ()=>{
+            // console.log('posting new photographer');
+            let p1 = await req.post('photographers', {
+                firstName: 'Fred',
+                lastName: 'Bloggs',
+                email: 'fred@bloggs',
+                displayName :'fb'
             });
+            // console.log('inserted', p1.data);
+            id = p1.data.id;
+            p1.data.
+                should.containSubset({
+                    firstName: 'Fred',
+                    lastName: 'Bloggs',
+                    email: 'fred@bloggs',
+                    displayName :'fb'
+                });
 
-            console.log('inserted', img1.data);
         });
 
         it('should get all image data',async ()=>{
-            let img1 = await req.get('images',{id:8});
+            let img1 = await req.get(`photographers/${id}`);
 
-            console.log('inserted', img1.data);
+            console.log('got', img1.data);
+        });
+
+        it('should get add a new critique',async ()=>{
+            let data = {
+                image :{ filehash:'cafe01234', caption:'Study in blue'},
+                title : 'What do you think?',
+                submitter : { submitterId : id},
+                openingNotes : 'This is a good example'
+            };
+            let img1 = await req.post(`photographers/${id}/critiques`,data);
+
+            console.log('got', img1.data);
         });
     });
 

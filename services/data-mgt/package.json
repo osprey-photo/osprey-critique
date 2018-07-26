@@ -4,8 +4,9 @@
   "description": "Objection.js express ES6 example",
   "main": "app.js",
   "scripts": {
+    "mocha": "DL_HOST=localhost mocha --recursive test",
     "migrate": "knex migrate:latest",
-    "start": "node app"
+    "start": "DB_HOST=localhost node app"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -23,6 +24,12 @@
     "mariasql": "^0.2.6",
     "morgan": "^1.9.0",
     "mysql": "^2.15.0",
-    "objection": "^0.9.0"
+    "objection": "^0.9.0",
+    "objection-db-errors": "^1.0.0",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "chai-subset": "^1.6.0",
+    "mocha": "^5.0.1"
   }
 }

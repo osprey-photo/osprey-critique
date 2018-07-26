@@ -16,6 +16,8 @@
 'use strict';
 
 const Model = require('objection').Model;
+const Images = require('./images.js');
+const Photographers = require('./photographers.js');
 
 class Critiques extends Model {
     // Table name is the only required property.
@@ -39,20 +41,20 @@ class Critiques extends Model {
     */
     static get relationMappings() {
         return {
-            imageid: {
+            image: {
                 relation: Model.BelongsToOneRelation,
-                modelClass: Person,
+                modelClass: Images,
                 join: {
-                    from: 'animal.ownerId',
-                    to: 'person.id'
+                    from: 'Critiques.imageId',
+                    to: 'Images.uid'
                 }
             },
-            submitterId: {
+            submitter: {
                 relation: Model.BelongsToOneRelation,
-                modelClass: Person,
+                modelClass: Photographers,
                 join: {
-                    from: 'animal.ownerId',
-                    to: 'person.id'
+                    from: 'Critiques.submitterId',
+                    to: 'Photographers.uid'
                 }
             }
         };

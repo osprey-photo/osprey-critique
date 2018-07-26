@@ -82,3 +82,10 @@ https://mariadb.com/kb/en/library/installing-and-using-mariadb-via-docker/#downl
 https://github.com/axios/axios/tree/master/examples
 
 https://blog.risingstack.com/node-js-best-practices-part-2/
+
+
+https://g.codefresh.io/repositories?filter=view:all;mode:grid
+
+
+https://www.npmjs.com/package/@okta/okta-vue
+

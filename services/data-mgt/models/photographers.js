@@ -28,8 +28,6 @@ class Photographers extends Model {
     // This object defines the relations to other models.
     static get relationMappings() {
         return {
-
-
             groupMembership: {
                 relation: Model.ManyToManyRelation,
                 modelClass: Groups,

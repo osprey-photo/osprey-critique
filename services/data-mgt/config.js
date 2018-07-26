@@ -22,7 +22,7 @@
 let config = module.exports = {};
 
 config.db = {
-    host: process.env.DBHOST || 'maria_db',
+    host: process.env.DB_HOST || 'maria_db',
     port: process.env.DB_PORT || 3306,
     user: process.env.DB_USER || 'root',
     pwd:  process.env.DB_PWD  || 'mypass'
