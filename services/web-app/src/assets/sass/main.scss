@@ -1,0 +1,40 @@
+// src/assets/sass/main.scss
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
+// 2. Set your own initial variables
+/* RGB */
+$color1: rgba(194, 148, 138, 1);
+$color2: rgba(126, 168, 190, 1);
+$color3: rgba(86, 71, 135, 1);
+$color4: rgba(248, 240, 251, 1);
+$color5: rgba(219, 203, 216, 1);
+
+$color1-invert: findColorInvert($color1);
+$color2-invert: findColorInvert($color2);
+$color3-invert: findColorInvert($color3);
+$color4-invert: findColorInvert($color4);
+$color5-invert: findColorInvert($color5);
+
+// Add a serif family
+$family-mine: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Open Sans",
+  "Helvetica Neue", sans-serif;
+
+// 3. Set the derived variables
+// Use the new pink as the primary color
+$primary: $color1;
+$primary-invert: $color1-invert;
+// Use the existing orange as the danger color
+$danger: $orange;
+$dark: $color3;
+$light: $color5;
+// $white: $color4;
+// Use the new serif family
+$family-primary: $family-mine;
+
+
+// 5. Add new color variables to the color map.
+@import "~bulma/sass/utilities/derived-variables";
+$addColors: ();
+$colors: map-merge($colors, $addColors);
+
+@import "~bulma/bulma";
