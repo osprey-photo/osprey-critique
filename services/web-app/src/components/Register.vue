@@ -37,6 +37,12 @@
                 </button>
             </div>
         </form>
+
+<ul id="example-1">
+    <p> {{allusers}}</p>
+</ul>
+
+
     </div>
 </template>
 
@@ -52,6 +58,14 @@
                 password : "",
                 password_confirmation : "",
                 is_admin : null
+            }
+        },
+        computed :{
+            allusers: async function (){
+                let url = "http://localhost:3000/all";
+                let response = await this.$http.get(url)
+                console.log(response.data)
+                return response.data.users;
             }
         },
         methods : {

@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Axios from 'axios'
+
 import store from './store'
 
 // Require the main Sass manifest file

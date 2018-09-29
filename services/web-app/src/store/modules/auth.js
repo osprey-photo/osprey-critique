@@ -6,7 +6,6 @@ import {
   AUTH_LOGOUT
 } from '../actions/auth'
 import { USER_REQUEST } from '../actions/user'
-// import apiCall from 'utils/api'
 
 const axios = require('axios')
 const $http = axios.create({
@@ -33,8 +32,9 @@ const actions = {
         .post('/login', { email: user.username, password: user.password })
         // apiCall({ url: 'auth', data: user, method: 'POST' })
         .then((resp) => {
-          console.log(resp)
-          localStorage.setItem('user-token', resp.token)
+          console.log('response from auth server')
+          console.log(resp.data)
+          localStorage.setItem('user-token', resp.data.token)
           // Here set the header of your ajax library to the token value.
           // example with axios
           // axios.defaults.headers.common['Authorization'] = resp.token
@@ -64,7 +64,7 @@ const mutations = {
   },
   [AUTH_SUCCESS]: (state, resp) => {
     state.status = 'success'
-    state.token = resp.token
+    state.token = resp.data.token
     state.hasLoadedOnce = true
   },
   [AUTH_ERROR]: (state) => {

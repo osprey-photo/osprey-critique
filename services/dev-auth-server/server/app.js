@@ -98,7 +98,7 @@ router.get("/all", (req, res) => {
     if (err) return res.status(500).send("Error on the server.");
     if (!rows) return res.status(404).send("Nothing found.");
     console.log(rows);
-    res.status(200).send();
+    res.status(200).send({users:rows});
   });
 });
 

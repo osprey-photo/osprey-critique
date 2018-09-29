@@ -1,10 +1,13 @@
-import { USER_REQUEST, USER_ERROR, USER_SUCCESS } from '../actions/user'
+import {
+  ALL_USERS_REQUEST,
+  ALL_USERS_SUCCESS,
+  ALL_USERS_ERROR
+} from '../actions/user'
 import apiCall from 'utils/api'
 import Vue from 'vue'
-import { AUTH_LOGOUT } from '../actions/auth'
 
 // User state has status and the profile object
-const state = { status: '', profile: {} }
+const state = { users: [] }
 
 /**
  * Getters for
@@ -12,7 +15,7 @@ const state = { status: '', profile: {} }
  * - isProfileLoaded
  */
 const getters = {
-  getProfile: (state) => state.profile,
+  getAllUsers: (state) => state.users,
   isProfileLoaded: (state) => !!state.profile.name
 }
 
@@ -20,33 +23,28 @@ const getters = {
  *
  */
 const actions = {
-  [USER_REQUEST]: ({ commit, dispatch }) => {
-    commit(USER_REQUEST)
+  [ALL_USERS_REQUEST]: ({ commit, dispatch }) => {
+    commit(ALL_USERS_REQUEST)
     apiCall({ url: 'user/me' })
       .then((resp) => {
-        commit(USER_SUCCESS, resp)
+        commit(ALL_USERS_SUCCESS, resp)
       })
       .catch((resp) => {
-        commit(USER_ERROR)
-        // if resp is unauthorized, logout, to
-        dispatch(AUTH_LOGOUT)
+        commit(ALL_USERS_ERROR)
       })
   }
 }
 
 const mutations = {
-  [USER_REQUEST]: (state) => {
+  [ALL_USERS_REQUEST]: (state) => {
     state.status = 'loading'
   },
-  [USER_SUCCESS]: (state, resp) => {
+  [ALL_USERS_SUCCESS]: (state, resp) => {
     state.status = 'success'
     Vue.set(state, 'profile', resp)
   },
   [USER_ERROR]: (state) => {
     state.status = 'error'
-  },
-  [AUTH_LOGOUT]: (state) => {
-    state.profile = {}
   }
 }
 
